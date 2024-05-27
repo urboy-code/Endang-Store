@@ -14,7 +14,7 @@
 <body class="h-full">
     <div class="min-h-full">
         <x-navbar></x-navbar>
-        <main class="pt-24">
+        <main class="pt-36 pb-16">
             {{ $slot }}
         </main>
     </div>
