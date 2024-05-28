@@ -6,6 +6,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js",
     ],
     theme: {
         container: {
@@ -22,10 +23,10 @@ export default {
                 dark: "#020617",
             },
             screens: {
-                'xl': "920px",
-                '2xl': "1320px",
+                xl: "920px",
+                "2xl": "1320px",
             },
         },
     },
-    plugins: [],
+    plugins: [require("flowbite/plugin")],
 };
