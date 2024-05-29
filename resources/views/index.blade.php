@@ -17,16 +17,16 @@
     </div>
 
     <div class="pt-36 mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mt-3 lg:right-0">
-        <div class="px-4 mb-10">
+        <div class="px-8 mb-10">
             <h2 class="font-bold text-xl lg:text-2xl text-center text-dark uppercase mb-8">About Us
             </h2>
         </div>
         <div class="flex flex-wrap">
-            <div class="w-full px-4 mb-10 lg:w-1/2">
+            <div class="w-full px-8 mb-10 lg:w-1/2">
                 <img src="{{ asset('assets/images/about.png') }}" class="rounded-xl max-w-full mx-auto object-cover"
                     alt="about image">
             </div>
-            <div class="w-full px-4 lg:w-1/2 text-justify">
+            <div class="w-full px-8 lg:w-1/2 text-justify">
                 <h4 class="font-bold text-xl text-secondary mb-8">Toko Pakaian Endang</h4>
                 <p class="text-base font-medium text-dark">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Blanditiis officia quis tenetur hic, quos
@@ -80,14 +80,56 @@
     <div class="pt-36 pb-16">
         <div class="mx-auto max-w-7xl py-6 lg:px-8 lg:right-0">
             <div class="flex flex-wrap justify-center">
-                <div class="px-4 mx-auto text-center mb-16">
+                <div class="px-8 mx-auto text-center mb-16">
                     <h1 class="font-bold text-2xl text-dark mb-2">Kenapa Belanja Di Toko Kami <span
                             class="font-bold text-secondary">?</span></h1>
                     <p class="font-medium text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing
                         elit. Neque, eveniet?</p>
                 </div>
             </div>
+            <div class="grid grid-cols-1 gap-3 w-full px-8 md:grid-cols-3">
+                <div class="flex justify-center flex-col text-center items-center">
+                    <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-secondary lg:h-12 lg:w-12">
+                        <svg class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold text-lg text-dark mb-2">Pengiriman Cepat</h4>
+                    <p class="text-base font-medium text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ex voluptate provident.</p>
+                </div>
+                <div class="flex justify-center flex-col text-center items-center">
+                    <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-secondary lg:h-12 lg:w-12">
+                        <svg class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold text-lg text-dark mb-2">Pengiriman Cepat</h4>
+                    <p class="text-base font-medium text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ex voluptate provident.</p>
+                </div>
+                <div class="flex justify-center flex-col text-center items-center">
+                    <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-secondary lg:h-12 lg:w-12">
+                        <svg class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold text-lg text-dark mb-2">Pengiriman Cepat</h4>
+                    <p class="text-base font-medium text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ex voluptate provident.</p>
+                </div>
+            </div>
         </div>
+
     </div>
 
 </x-layout>

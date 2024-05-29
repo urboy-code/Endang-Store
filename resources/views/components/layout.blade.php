@@ -17,6 +17,7 @@
         <main class="pt-36 pb-16">
             {{ $slot }}
         </main>
+        <x-footer></x-footer>
     </div>
 
 </body>

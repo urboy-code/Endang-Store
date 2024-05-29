@@ -1,5 +1,5 @@
 <nav class="" x-data="{ isOpen: false }">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-8 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
             <div class="flex-shrink-0 flex items-center">
                 <h1 class="text-dark font-extrabold">ENDANG STORE</h1>
