@@ -25,37 +25,42 @@
 
 
     <form class="max-w-xl mx-auto py-10 px-8" method="POST" enctype="multipart/form-data"
-        action="{{ route('product.store') }}">
+        action="{{ route('product.update', $product->id) }}">
         @csrf
+        @method('PUT')
         <div class="mb-5">
-
-            <label class="block mb-2 text-sm font-bold text-dark dark:text-white" for="file_input">Upload
+            <label class="block mb-2 text-sm font-bold text-dark dark:text-white" for="file_input">Edit
                 Gambar Produk</label>
+            <div class="mb-2">
+                <img src="{{ asset('storage/' . $product->image) }}" class="h-30 w-30 object-cover" alt="">
+            </div>
             <input
                 class="block w-full text-sm text-dark border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 id="file_input" type="file" name="image">
 
         </div>
         <div class="mb-5">
-            <label for="name" class="block mb-2 text-sm font-bold text-dark dark:text-white">Nama Produk</label>
+            <label for="name" class="block mb-2 text-sm font-bold text-dark dark:text-white">Edit Nama
+                Produk</label>
             <input type="text" id="name" name="name"
                 class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Baju Hitam" />
+                value="{{ $product->name }}" />
         </div>
         <div class="mb-5">
-            <label for="price" class="block mb-2 text-sm font-bold text-dark dark:text-white">Harga
+            <label for="price" class="block mb-2 text-sm font-bold text-dark dark:text-white">Edit Harga
                 Produk</label>
-            <input type="text" id="price" name="price"
+            <input type="text" id="price" name="price" value="{{ $product->price }}"
                 class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
         <div class="mb-5">
-            <label for="countries" class="block mb-2 text-sm font-bold text-dark dark:text-white">Kategori
+            <label for="countries" class="block mb-2 text-sm font-bold text-dark dark:text-white">Edit Kategori
                 Produk</label>
             <select id="countries" name="category_id"
                 class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Pilih Kategori Produk</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option {{ $category->id == $product->category_id ? 'selected' : '' }} value="{{ $category->id }}"
+                        option>{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -65,12 +70,11 @@
                 Produk</label>
             <textarea id="description" rows="4" name="description"
                 class="block p-2.5 w-full text-sm text-dark bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="gambarkan secara singkat tentang produknya disini..."></textarea>
+                placeholder="gambarkan secara singkat tentang produknya disini...">{{$product->description}}</textarea>
 
         </div>
         <button type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
     </form>
-
 
 </x-dashboard.layout>

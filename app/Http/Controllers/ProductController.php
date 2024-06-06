@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use File;
 
 class ProductController extends Controller
 {
@@ -11,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -19,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -27,7 +32,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'category_id' => 'required | integer',
+        ]);
+
+
+        $fileName = time() . '_' . $request->image->getClientOriginalName();
+        $filePath = $request->image->storeAs('uploads', $fileName, 'public');
+
+        $product = new Product();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+        $product->image = $filePath;
+        $product->save();
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -43,7 +68,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -51,7 +78,36 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'category_id' => 'required | integer',
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'required',
+            ]);
+
+            $fileName = time() . '_' . $request->image->getClientOriginalName();
+            $filePath = $request->image->storeAs('uploads', $fileName, 'public');
+
+            File::delete(public_path($product->image));
+
+            $product->image = $filePath;
+        }
+
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+
+        $product->save();
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -59,6 +115,23 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('product.index');
+    }
+
+    public function trashed(){
+        $products = Product::onlyTrashed()->get();
+        return view('products.trash', compact('products'));
+    }
+
+    public function restore($id){
+
+        $product = Product::onlyTrashed()->findOrFail($id);
+
+        $product->restore();
+        return redirect()->back();
+
     }
 }
