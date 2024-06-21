@@ -121,17 +121,18 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
-    public function trashed(){
+    public function trashed()
+    {
         $products = Product::onlyTrashed()->get();
         return view('products.trash', compact('products'));
     }
 
-    public function restore($id){
+    public function restore($id)
+    {
 
         $product = Product::onlyTrashed()->findOrFail($id);
 
         $product->restore();
         return redirect()->back();
-
     }
 }

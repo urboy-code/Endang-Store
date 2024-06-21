@@ -1,13 +1,13 @@
 <x-dashboard.layout>
     <div class="pt-5 ml-8 mb-4">
         <a href="{{ route('product.index') }}"
-            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Back</a>
+            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Back</a>
     </div>
 
     @if ($errors->any())
 
         @foreach ($errors->all() as $error)
-            <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800 mx-8"
+            <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 mx-8"
                 role="alert">
                 <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor" viewBox="0 0 20 20">
@@ -29,30 +29,30 @@
         @csrf
         <div class="mb-5">
 
-            <label class="block mb-2 text-sm font-bold text-dark dark:text-white" for="file_input">Upload
+            <label class="block mb-2 text-sm font-bold text-dark" for="file_input">Upload
                 Gambar Produk</label>
             <input
-                class="block w-full text-sm text-dark border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                class="block w-full text-sm text-dark border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                 id="file_input" type="file" name="image">
 
         </div>
         <div class="mb-5">
-            <label for="name" class="block mb-2 text-sm font-bold text-dark dark:text-white">Nama Produk</label>
+            <label for="name" class="block mb-2 text-sm font-bold text-dark">Nama Produk</label>
             <input type="text" id="name" name="name"
-                class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Baju Hitam" />
         </div>
         <div class="mb-5">
-            <label for="price" class="block mb-2 text-sm font-bold text-dark dark:text-white">Harga
+            <label for="price" class="block mb-2 text-sm font-bold text-dark">Harga
                 Produk</label>
             <input type="text" id="price" name="price"
-                class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
         </div>
         <div class="mb-5">
-            <label for="countries" class="block mb-2 text-sm font-bold text-dark dark:text-white">Kategori
+            <label for="countries" class="block mb-2 text-sm font-bold text-dark">Kategori
                 Produk</label>
             <select id="countries" name="category_id"
-                class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option selected>Pilih Kategori Produk</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -61,15 +61,15 @@
         </div>
         <div class="mb-5">
 
-            <label for="description" class="block mb-2 text-sm font-bold text-dark dark:text-white">Deskripsi
+            <label for="description" class="block mb-2 text-sm font-bold text-dark">Deskripsi
                 Produk</label>
             <textarea id="description" rows="4" name="description"
-                class="block p-2.5 w-full text-sm text-dark bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="block p-2.5 w-full text-sm text-dark bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="gambarkan secara singkat tentang produknya disini..."></textarea>
 
         </div>
         <button type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
     </form>
 
 
