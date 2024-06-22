@@ -6,6 +6,8 @@ use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -14,11 +16,14 @@ class CartController extends Controller
      */
     public function index()
     {
-        $products = Cart::content();
+        $products = Session::get('cart', []);
+
+        Log::info('Cart Data: ', $products );
+
         $subTotal = 0;
         
         foreach($products as $product){
-            $subTotal += $product->qty * $product->price;
+            $subTotal += $product['qty'] * $product['price'];
         }
 
         $totalAmount = $subTotal;
