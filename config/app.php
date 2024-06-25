@@ -2,6 +2,10 @@
 
 return [
 
+    'provider' => [
+        App\Providers\MidtransServiceProvider::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

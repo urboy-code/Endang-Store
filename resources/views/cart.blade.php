@@ -3,6 +3,8 @@
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight lg:leading-tight text-white md:text-5xl lg:text-6xl">
             Check Out <span class="block"> Barang Kamu !!!</span></h1>
     </x-main.hero>
+
+
     <section class=" py-8 antialiased md:py-16">
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
             <h2 class="text-xl font-bold text-white sm:text-2xl">Shopping Cart</h2>
@@ -24,7 +26,7 @@
                                         <div class="flex items-center">
                                             <a href="{{ route('qty-decrement', $product['id']) }}" type="button"
                                                 id="decrement-button" data-input-counter-decrement="counter-input"
-                                                class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100">
+                                                class="inline-flex h-5 w-5 shrink-0 items-center justify-   center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100">
                                                 <svg class="h-2.5 w-2.5 text-gray-900" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 18 2">
@@ -48,7 +50,8 @@
                                         </div>
                                         <div class="text-end md:order-4 md:w-32">
                                             <p class="text-base font-bold text-gray-900" name="price">Rp
-                                                {{ number_format($product['qty'] * $product['price'], 0, ',', '.') }}</p>
+                                                {{ number_format($product['qty'] * $product['price'], 0, ',', '.') }}
+                                            </p>
                                         </div>
                                     </div>
 
@@ -89,11 +92,6 @@
                                     <dd name="total_amount" class="text-base font-medium text-gray-900">Rp
                                         {{ number_format($subTotal, 0, ',', '.') }}</dd>
                                 </dl>
-
-                                <dl class="flex items-center justify-between gap-4">
-                                    <dt class="text-base font-normal text-gray-500">Store Pickup</dt>
-                                    <dd class="text-base font-medium text-gray-900">Gratis</dd>
-                                </dl>
                             </div>
 
                             <dl class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2">
@@ -103,7 +101,7 @@
                             </dl>
                         </div>
 
-                        <a href="#"
+                        <a href="{{ route('transaction') }}"
                             class="flex w-full items-center justify-center rounded-lg bg-blue-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300">Proceed
                             to Checkout</a>
 

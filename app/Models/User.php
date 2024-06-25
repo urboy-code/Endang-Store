@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'alamat',
+        'negara',
+        'kota',
+        'kode_pos',
+        'phone',
         'role',
     ];
 
@@ -52,7 +57,8 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function isUser(){
+    public function isUser()
+    {
         return $this->role === 'user';
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+
 use App\Http\Middleware\CheckRole;
+use App\Http\Middleware\EnsureProfileIsComplete;
 use illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Route::aliasMiddleware('role', CheckRole::class);
+        Route::aliasMiddleware('profileComplete', EnsureProfileIsComplete::class);
     }
 }

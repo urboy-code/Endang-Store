@@ -116,4 +116,12 @@ class ShopController extends Controller
             ['cart' => json_encode($cart)]
         );
     }
+
+    public function show($id){
+        $product = Product::findOrFail($id);
+        // $category = Category::with('product')->get();
+        return view('detail', compact('product'));
+
+        // dd($product);
+    }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-bg">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,7 @@
 <body class="h-full">
     @include('sweetalert::alert')
 
-    
+
     <div class="min-h-full">
         <x-navbar></x-navbar>
         <main class="">
@@ -36,6 +37,21 @@
                 }
             })
         })
+    </script>
+    <script>
+        @if (session('status'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('status') }}',
+            });
+        @elseif (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        @endif
     </script>
 </body>
 

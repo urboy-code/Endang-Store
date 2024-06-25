@@ -13,39 +13,49 @@
             <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
         </nav>
 
-        <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
-            <div class="flex items-center md:ml-auto md:pr-4">
-                <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
-                    <span
-                        class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
-                        <i class="fas fa-search"></i>
-                    </span>
-                    <input type="text"
-                        class="pl-8.75 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
-                        placeholder="Type here..." />
-                </div>
-            </div>
-            <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
-                <li class="flex items-center">
-                    <a href="./pages/sign-in.html"
-                        class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
-                        <i class="fa fa-user sm:mr-1"></i>
-                        <span class="hidden sm:inline">Sign In</span>
-                    </a>
-                </li>
-                <li class="flex items-center pl-4 xl:hidden">
-                    <a href="javascript:;" class="block p-0 text-sm transition-all ease-nav-brand text-slate-500"
-                        sidenav-trigger>
-                        <div class="w-4.5 overflow-hidden">
-                            <i
-                                class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            <i
-                                class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+        <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+            <div class="ml-4 flex items-center md:ml-6">
+                @auth
+                    <!-- Profile dropdown -->
+                    <div class="relative ml-3" x-data="{ isOpen: false }">
+                        <div>
+                            <button type="button" @click="isOpen = !isOpen"
+                                class="relative flex max-w-xs items-center rounded-full bg-btn text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="absolute -inset-1.5"></span>
+                                <span class="sr-only">Open user menu</span>
+                                <div class="h-10 w-10 flex items-center justify-center bg-blue-500 text-white font-bold text-2xl rounded-full">
+                                    {{strtoupper(substr(auth()->user()->name, 0, 1))}}
+                                </div>
+                            </button>
                         </div>
-                    </a>
-                </li>
-            </ul>
+                        <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
+                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75 transform"
+                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                            class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <!-- Active: "bg-gray-100", Not Active: "" -->
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-0">Your Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-1">Settings</a>
+                            <div>
+                                <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    tabindex="-1" id="user-menu-item-2">Sign out</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="py-2 px-4 bg-btn rounded-full hover:bg-hover text-white text-sm lg:text-md font-medium">Login</a>
+                @endauth
+            </div>
         </div>
     </div>
 </nav>

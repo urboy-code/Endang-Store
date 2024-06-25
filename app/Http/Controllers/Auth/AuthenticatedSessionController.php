@@ -30,10 +30,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+
         // Muat Cart dari database
         $userId = Auth::id();
         $cartData = Cart::where('user_id', $userId)->first();
-        if($cartData){
+        if ($cartData) {
             Session::put('cart', json_decode($cartData->cart_data, true));
         }
 
