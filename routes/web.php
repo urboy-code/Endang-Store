@@ -8,17 +8,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController as AdminLoginController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\dashboard\UserController;
+use App\Http\Controllers\Gateway\MidtransController;
+use App\Http\Controllers\Gateway\SuccessController;
+use App\Http\Controllers\Ongkir\OngkirController;
+use App\Http\Controllers\Profile\AddressController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Middleware\EnsureProfileIsComplete;
-use Illuminate\Routing\Router;
-
-// app(Router::class)->aliasMiddleware('profileComplete', EnsureProfileIsComplete::class);
-
-// Route::get('/', function () {
-//     return view('index');
-// })->name('home');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/detail_product', )
@@ -27,20 +22,20 @@ Route::resource('/shop', ShopController::class);
 Route::resource('/cart', CartController::class);
 
 Route::middleware(['auth', 'profileComplete'])->group(function () {
-    Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
-});
-// Route::get('transaction', function(){
-//     return view('transaction');
-// })->name('transaction');
-
-Route::middleware('auth')->group(function () {
-    Route::get('add-to-cart/{product_id}', [ShopController::class, 'addToCart'])->name('add-to-cart');
+    // Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
 });
 
-// Shop Controller
-Route::get('qty-increment/{rowId}', [ShopController::class, 'qtyIncrement'])->name('qty-increment');
-Route::get('qty-decrement/{rowId}', [ShopController::class, 'qtyDecrement'])->name('qty-decrement');
-Route::get('remove-product/{rowId}', [ShopController::class, 'removeProduct'])->name('remove-product');
+Route::middleware(['auth'])->group(function () {
+    Route::get('add-to-cart/{product_id}', [CartController::class, 'create'])->name('add-to-cart');
+    Route::get('qty-increment/{rowId}', [CartController::class, 'qtyIncrement'])->name('qty-increment');
+    Route::get('qty-decrement/{rowId}', [CartController::class, 'qtyDecrement'])->name('qty-decrement');
+    Route::get('remove-product/{rowId}', [CartController::class, 'destroy'])->name('remove-product');
+});
+
+Route::post('checkout', [MidtransController::class, 'process'])->name('checkout.process');
+Route::get('checkout/{transaction}', [MidtransController::class, 'checkout'])->name('checkout');
+Route::get('checkout/success/{transaction}', [MidtransController::class, 'success'])->name('checkout.success');
+
 
 Route::resource('dashboard', DashboardController::class);
 Route::resource('orders', OrderController::class);
@@ -56,21 +51,21 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
         // Tambahkan rute admin lainnya di sini
         Route::resource('product', ProductController::class);
+        Route::resource('user', UserController::class);
     });
 });
 
-// Payment Routes
-Route::post('/payment/token', [PaymentController::class, 'token']);
-Route::post('/payment/notification', [PaymentController::class, 'notification']);
-
+// Ongkir
+Route::get('cek-ongkir', [OngkirController::class, 'index'])->name('cek-ongkir.index');
 
 
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('/profile/address', AddressController::class);
 });
 
 require __DIR__ . '/auth.php';

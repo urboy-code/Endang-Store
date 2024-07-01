@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Session;
+use Midtrans\Snap;
 
 class TransactionController extends Controller
 {
+
+
     public function index()
     {
-        $products = Session::get('cart', []);
+        $products = Cart::content();
+        $subtotal = 0;
+        $tax = 0.1;
 
-        Log::info('Cart Data: ', $products);
-
-        $subTotal = 0;
-
-        foreach ($products as $product) {
-            $subTotal += $product['qty'] * $product['price'];
+        foreach ($products as $product){
+            $subtotal += $product->price;
         }
+        $taxAmount = $subtotal*$tax;
+        $total = $subtotal + $taxAmount;
 
-        $totalAmount = $subTotal;
-        return view('transaction', compact('totalAmount'));
+        return view('transaction', compact('tax', 'total', 'subtotal'));
     }
-
-
 }

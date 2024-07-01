@@ -21,11 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'alamat',
-        'negara',
-        'kota',
-        'kode_pos',
-        'phone',
         'role',
     ];
 
@@ -60,5 +55,10 @@ class User extends Authenticatable
     public function isUser()
     {
         return $this->role === 'user';
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
     }
 }

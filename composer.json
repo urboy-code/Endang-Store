@@ -10,7 +10,8 @@
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "midtrans/midtrans-php": "^2.5",
-        "realrashid/sweet-alert": "^7.2"
+        "realrashid/sweet-alert": "^7.2",
+        "steevenz/rajaongkir": "^2.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",

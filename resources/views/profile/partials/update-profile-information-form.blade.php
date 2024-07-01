@@ -15,7 +15,6 @@
 
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
-        @method('patch')
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -50,40 +49,15 @@
             @endif
         </div>
 
-        <div>
-            <x-input-label for="negara" :value="__('Negara')" />
-            <x-text-input id="negara" name="negara" type="text" class="mt-1 block w-full" :value="old('negara', $user->negara)"
-                required autofocus autocomplete="negara" />
-            <x-input-error class="mt-2" :messages="$errors->get('negara')" />
-        </div>
+        @foreach ($addresses as $address)
+            <a href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-        <div>
-            <x-input-label for="kota" :value="__('Kota')" />
-            <x-text-input id="kota" name="kota" type="text" class="mt-1 block w-full" :value="old('kota', $user->kota)"
-                required autofocus autocomplete="kota" />
-            <x-input-error class="mt-2" :messages="$errors->get('kota')" />
-        </div>
-
-        <div>
-            <x-input-label for="alamat" :value="__('Alamat')" />
-            <x-text-input id="alamat" name="alamat" type="text" class="mt-1 block w-full" :value="old('alamat', $user->alamat)"
-                required autofocus autocomplete="alamat" />
-            <x-input-error class="mt-2" :messages="$errors->get('alamat')" />
-        </div>
-
-        <div>
-            <x-input-label for="kode_pos" :value="__('Kode Pos')" />
-            <x-text-input id="kode_pos" name="kode_pos" type="text" class="mt-1 block w-full" :value="old('kode_pos', $user->kode_pos)"
-                required autofocus autocomplete="kode_pos" />
-            <x-input-error class="mt-2" :messages="$errors->get('kode_pos')" />
-        </div>
-
-        <div>
-            <x-input-label for="phone" :value="__('Nomor Telephon')" />
-            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)"
-                required autofocus autocomplete="phone" />
-            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
-        </div>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {{ $address->is_selected ? 'border-primary' : '' }}</h5>
+                <p class="font-normal text-gray-700 dark:text-gray-400">{{$address->city}}</p>
+            </a>
+        @endforeach
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
@@ -94,4 +68,7 @@
             @endif
         </div>
     </form>
+
+
+
 </section>

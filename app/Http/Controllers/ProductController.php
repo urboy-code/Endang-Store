@@ -35,8 +35,8 @@ class ProductController extends Controller
         $request->validate([
             'image' => 'required',
             'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
+            'description' => 'required | string',
+            'unit_price' => 'required',
             'category_id' => 'required | integer',
         ]);
 
@@ -47,7 +47,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->description = $request->description;
-        $product->price = $request->price;
+        $product->unit_price = $request->unit_price;
         $product->category_id = $request->category_id;
         $product->image = $filePath;
         $product->save();
@@ -80,8 +80,8 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
+            'description' => 'required | string',
+            'unit_price' => 'required',
             'category_id' => 'required | integer',
         ]);
 
@@ -102,7 +102,7 @@ class ProductController extends Controller
 
         $product->name = $request->name;
         $product->description = $request->description;
-        $product->price = $request->price;
+        $product->unit_price = $request->unit_price;
         $product->category_id = $request->category_id;
 
         $product->save();

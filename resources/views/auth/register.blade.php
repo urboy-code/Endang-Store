@@ -40,9 +40,9 @@
 
         {{-- Role --}}
         <div class="mt-4">
-            <x-input-label for="role" :value="__('Role')" />
-            <select name="role" id="role" class="block mt-2 w-full">
-                <option value="user">User</option>
+            <x-input-label for="role" class="hidden" :value="__('Role')" />
+            <select name="role" id="role" class="hidden mt-2 w-full">
+                <option value="user">Customer</option>
                 @if (!$adminExists)
                     <option value="admin">Admin</option>
                 @endif

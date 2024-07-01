@@ -18,10 +18,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png" />
-    <link rel="icon" type="image/png" href="../../assets/img/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/icon/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/icon/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/icon/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('assets/icon/favicon/site.webmanifest') }}">
     @vite('resources/css/app.css')
     <title>Dashboard Admin</title>
+
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -53,6 +56,7 @@
         <!-- end cards -->
     </main>
 </body>
+
 <!-- plugin for charts  -->
 <script src="../../assets/js/plugins/chartjs.min.js" async></script>
 <!-- plugin for scrollbar  -->

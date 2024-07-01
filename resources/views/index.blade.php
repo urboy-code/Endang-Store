@@ -21,9 +21,9 @@
         </div>
     </div>
 
-    <div class="pt-36 mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mt-3 lg:right-0">
+    <div class="pt-36 mx-auto max-w-7xl sm:px-6 lg:px-8 my-16 lg:right-0">
         <div class="px-8 mb-16">
-            <h2 class="font-bold text-xl lg:text-2xl text-center text-dark uppercase mb-8">About Us
+            <h2 class="font-bold text-xl lg:text-2xl text-center text-white uppercase mb-8">About Us
             </h2>
         </div>
         <div class="flex flex-wrap">
@@ -43,17 +43,17 @@
         </div>
     </div>
 
-    <div class="pt-32 pb-16">
+    <div class="pt-36 my-16">
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mt-3 lg:right-0">
             <div class="w-full px-4 mb-10">
-                <h4 class="font-bold text-2xl lg:text-2xl text-dark mb-2 uppercase text-center">Produk
+                <h4 class="font-bold text-2xl lg:text-2xl text-white mb-12 uppercase text-center">Produk
                     Terbaru</h4>
             </div>
-            <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 md:gap-4 px-4 w-full">
+            <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 md:gap-4 px-4 w-full">
                 @foreach ($products as $product)
-                    <div class="product max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow">
+                    <div class="product max-w-sm w-full mx-auto bg-white border border-gray-200 rounded-lg shadow">
                         <a href="#">
-                            <img class="rounded-t-lg object-cover h-auto"
+                            <img class="rounded-t-lg object-cover h-96 w-full"
                                 src="{{ asset('storage/' . $product->image) }}" alt="" />
                         </a>
                         <div class="p-5">
@@ -61,13 +61,11 @@
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                                     {{ $product->name }}</h5>
                             </a>
-                            <p class="mb-3 font-normal text-gray-700">{{ $product->description }}
-                            </p>
                             <p class="mb-3 font-normal text-gray-700">Rp
-                                {{ number_format($product->price, 0, ',', '.') }}
+                                {{ number_format($product->unit_price, 0, ',', '.') }}
                             </p>
                             <a href="{{ route('shop.show', $product->id) }}"
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-btn rounded-lg hover:bg-hover focus:ring-4 focus:outline-none focus:ring-blue-300">
                                 Detail
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -95,8 +93,8 @@
         <div class="mx-auto max-w-7xl py-6 lg:px-8 lg:right-0">
             <div class="flex flex-wrap justify-center">
                 <div class="px-8 mx-auto text-center mb-16">
-                    <h1 class="font-bold text-2xl text-dark mb-2">Kenapa Belanja Di Toko Kami <span
-                            class="font-bold text-white">?</span></h1>
+                    <h1 class="font-bold text-2xl text-white mb-2">Kenapa Belanja Di Toko Kami <span
+                            class="font-bold text-yellow-400">?</span></h1>
                     <p class="font-medium text-base text-hitamCoklat">Lorem ipsum dolor sit amet consectetur adipisicing
                         elit. Neque, eveniet?</p>
                 </div>

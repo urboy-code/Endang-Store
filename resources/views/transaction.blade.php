@@ -5,7 +5,8 @@
     </x-main.hero>
 
     <section class="bg-gray-100 py-8 antialiased dark:bg-gray-900 md:py-16">
-        <form action="#" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+        <form action="" method="POST" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+            @csrf
             <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
                 <div class="flex-1 space-y-8">
                     <div class="space-y-4">
@@ -18,7 +19,7 @@
                                 </label>
                                 <input type="text" id="your_name" name="name"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{Auth::user()->name}}" readonly />
+                                    value="{{ Auth::user()->name }}" readonly />
                             </div>
 
                             <div>
@@ -27,7 +28,7 @@
                                 </label>
                                 <input type="email" id="your_email" name="email"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{Auth::user()->email}}" readonly />
+                                    value="{{ Auth::user()->email }}" readonly />
                             </div>
 
                             <div>
@@ -38,7 +39,7 @@
                                 </div>
                                 <input type="text" id="your_name" name="negara"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{Auth::user()->negara}}" readonly />
+                                    value="{{ Auth::user()->negara }}" readonly />
                             </div>
 
                             <div>
@@ -48,7 +49,7 @@
                                 </div>
                                 <input type="text" id="your_name" name="kota"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{Auth::user()->kota}}" readonly />
+                                    value="{{ Auth::user()->kota }}" readonly />
                             </div>
 
                             <div>
@@ -58,8 +59,8 @@
                                     </label>
                                 </div>
                                 <textarea id="message" rows="4" name="alamat"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Masukan alamat disini">{{Auth::user()->alamat}}</textarea>
+                                    class="block p-2.5 w-full h-10 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Masukan alamat disini">{{ Auth::user()->alamat }}</textarea>
                             </div>
 
                             <div>
@@ -75,7 +76,8 @@
                                     <div class="relative w-full">
                                         <input type="text" id="phone-input" name="telp"
                                             class="z-20 block w-full rounded-e-lg border border-s-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:border-s-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500"
-                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="{{Auth::user()->phone}}" readonly />
+                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="{{ Auth::user()->phone }}"
+                                            readonly />
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +89,7 @@
                                 </label>
                                 <input type="text" id="vat_number" name="kode_pos"
                                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{Auth::user()->kode_pos}}" readonly />
+                                    value="{{ Auth::user()->kode_pos }}" readonly />
                             </div>
                         </div>
                     </div>
@@ -98,7 +100,8 @@
                         <div class="-my-3 divide-y divide-gray-200 dark:divide-gray-800">
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Subtotal</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">Rp {{number_format($totalAmount, 0, ',', '.')}}</dd>
+                                <dd class="text-base font-medium text-gray-900 dark:text-white">Rp
+                                    {{ $subtotal }}</dd>
                             </dl>
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Kurir</dt>
@@ -107,18 +110,21 @@
 
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">Rp 0</dd>
+                                <dd class="text-base font-medium text-gray-900 dark:text-white">
+                                    {{ number_format($tax * 100) . '%' }}
+                                </dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                <dd class="text-base font-bold text-gray-900 dark:text-white">Rp {{number_format($totalAmount, 0, ',', '.')}}</dd>
+                                <dd class="text-base font-bold text-gray-900 dark:text-white">Rp
+                                    {{ number_format($total, 0, ',', '.') }}</dd>
                             </dl>
                         </div>
                     </div>
 
                     <div class="space-y-3">
-                        <button type="submit"
+                        <button type="button" id="pay-button"
                             class="flex w-full items-center justify-center rounded-lg bg-blue-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Lakukan
                             Pembayaran</button>
                     </div>
@@ -126,4 +132,46 @@
             </div>
         </form>
     </section>
+
+    @section('scripts')
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.clientKey') }}">
+        </script>
+        <script type="text/javascript">
+            document.getElementById('pay-button').addEventListener('click', function() {
+                fetch('/checkout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            totalAmount: '{{ $total }}',
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.snap_token) {
+                            snap.pay(data.snap_token, {
+                                onSuccess: function(result) {
+                                    window.location.href = '{{ route('home', $transaction->id)}}';
+                                },
+                                onPending: function(result) {
+                                    window.location.href = '/pending';
+                                },
+                                onError: function(result) {
+                                    alert('Payment error.');
+                                    console.log(result);
+                                }
+                            });
+                        } else {
+                            console.error('Failed to get Snap token:', data.error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        </script>
+    @endsection
+
 </x-layout>

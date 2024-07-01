@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Cart as ModelsCart;
+use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -16,59 +15,125 @@ class CartController extends Controller
      */
     public function index()
     {
-        $products = Session::get('cart', []);
+        $userId = Auth::id();
+        $cartData = $this->getCartData($userId);
 
-        Log::info('Cart Data: ', $products );
+        $products = Cart::content();
+        $subtotal = 0;
+        foreach ($products as $product) {
+            $subtotal += $product->price;
+        };
+        return view('cart', compact('products', 'subtotal', 'cartData'));
+    }
 
-        $subTotal = 0;
-        
-        foreach($products as $product){
-            $subTotal += $product['qty'] * $product['price'];
+    public function create($productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        $existingItem = Cart::content()->where('id', $product->id)->first();
+
+        if ($existingItem) {
+            $newQty = $existingItem->qty + 1;
+            $newPrice = $product->unit_price * $newQty;
+
+            Cart::update($existingItem->rowId, [
+                'qty' => $newQty,
+                'price' => $newPrice,
+                'options' => [
+                    'unit_price' => $product->unit_price,
+                    'image' => $product->image,
+                ]
+            ]);
+        } else {
+            // dd($product);
+            Cart::add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'qty' => 1,
+                'price' => $product->unit_price * 1,
+                'options' => [
+                    'unit_price' => $product->unit_price,
+                    'image' => $product->image
+                ]
+            ]);
         }
 
-        $totalAmount = $subTotal;
+        // dd(Cart::content());
+        if (Auth::check()) {
+            $this->saveToDatabase(Auth::id());
+        }
 
-        return view('cart', compact('products', 'totalAmount', 'subTotal'));
+        Alert::success('Success', 'Product added to cart successfully!');
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function qtyIncrement($id)
     {
-        
+        $product = Cart::get($id);
+
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found in cart.');
+        }
+
+        $newQty = $product->qty + 1;
+        $newPrice = $product->options->unit_price * $newQty; // Assuming unit_price is stored in options
+
+        Cart::update($id, [
+            'qty' => $newQty,
+            'price' => $newPrice
+        ]);
+
+
+        // dd(Cart::content());
+        if (Auth::check()) {
+            $this->saveToDatabase(Auth::id());
+        }
+
+        return redirect()->back();
+    }
+    public function qtyDecrement($id)
+    {
+        $product = Cart::get($id);
+
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found in cart.');
+        }
+
+        $newQty = $product->qty - 1;
+        $newPrice = $product->options->unit_price * $newQty; // Assuming unit_price is stored in options
+
+        Cart::update($id, [
+            'qty' => $newQty,
+            'price' => $newPrice
+        ]);
+
+
+        // dd(Cart::content());
+        if (Auth::check()) {
+            $this->saveToDatabase(Auth::id());
+        }
+
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function saveToDatabase($userId)
     {
-        
+        $cartData = Cart::content()->toArray();
+        ModelsCart::updateOrCreate(
+            ['user_id' => $userId],
+            ['cart_data' => json_encode($cartData)]
+        );
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function getCartData($userId)
     {
-        //
-    }
+        $cart = ModelsCart::where('user_id', $userId)->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        if ($cart) {
+            return json_decode($cart->cart_data, true);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        return [];
     }
 
     /**
@@ -76,6 +141,12 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Cart::remove($id);
+
+        if (Auth::check()) {
+            $this->saveToDatabase(Auth::id());
+        }
+
+        return redirect()->back();
     }
 }

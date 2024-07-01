@@ -12,7 +12,7 @@
                     </h1>
                     <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
                         <p class="text-2xl font-extrabold text-gray-900 sm:text-3xl dark:text-white">
-                            Rp {{ number_format($product->price, 0, ',', '.')}}
+                            Rp {{ number_format($product->unit_price, 0, ',', '.')}}
                         </p>
                     </div>
 
