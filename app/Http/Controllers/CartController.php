@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart as ModelsCart;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -41,7 +42,7 @@ class CartController extends Controller
                 'price' => $newPrice,
                 'options' => [
                     'unit_price' => $product->unit_price,
-                    'image' => $product->image,
+                    'image' => $product->image
                 ]
             ]);
         } else {

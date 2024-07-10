@@ -26,6 +26,7 @@
                                 <th scope="col" class="px-4 py-3">Nama Produk</th>
                                 <th scope="col" class="px-3 py-3">Kategori Produk</th>
                                 <th scope="col" class="px-4 py-3">Harga</th>
+                                <th scope="col" class="px-4 py-3">Berat</th>
                                 <th scope="col" class="px-4 py-3">Action</th>
                             </tr>
                         </thead>
@@ -41,6 +42,7 @@
                                     <td class="px-4 py-3">{{ $product->name }}</td>
                                     <td class="px-4 py-3">{{ $product->category->name }}</td>
                                     <td class="px-4 py-3">Rp {{ number_format($product->unit_price, 0, ',', '.') }}</td>
+                                    <td class="px-4 py-3">{{ $product->weight }}</td>
                                     <td
                                         class="px-6 py-4 items-center justify-center font-medium text-gray-900 whitespace-nowrap flex">
                                         <a href="{{ route('product.edit', $product->id) }}"

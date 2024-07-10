@@ -49,16 +49,6 @@
             @endif
         </div>
 
-        @foreach ($addresses as $address)
-            <a href="#"
-                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {{ $address->is_selected ? 'border-primary' : '' }}</h5>
-                <p class="font-normal text-gray-700 dark:text-gray-400">{{$address->city}}</p>
-            </a>
-        @endforeach
-
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

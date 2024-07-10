@@ -37,6 +37,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required | string',
             'unit_price' => 'required',
+            'weight' => 'required',
             'category_id' => 'required | integer',
         ]);
 
@@ -48,6 +49,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->unit_price = $request->unit_price;
+        $product->weight = $request->weight;
         $product->category_id = $request->category_id;
         $product->image = $filePath;
         $product->save();
@@ -82,6 +84,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required | string',
             'unit_price' => 'required',
+            'weight' => 'required',
             'category_id' => 'required | integer',
         ]);
 
@@ -103,6 +106,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->unit_price = $request->unit_price;
+        $product->weight = $request->weight;
         $product->category_id = $request->category_id;
 
         $product->save();

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b78b25007cc26bf5534d0891714cfcb6",
+    "content-hash": "47a121147393518808b3c4e26046eb35",
     "packages": [
         {
             "name": "brick/math",
@@ -1116,16 +1116,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.13.0",
+            "version": "v11.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "92deaa4f037ff100e36809443811301819a8cf84"
+                "reference": "657e8464e13147d56bc3a399115c8c26f38d4821"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/92deaa4f037ff100e36809443811301819a8cf84",
-                "reference": "92deaa4f037ff100e36809443811301819a8cf84",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/657e8464e13147d56bc3a399115c8c26f38d4821",
+                "reference": "657e8464e13147d56bc3a399115c8c26f38d4821",
                 "shasum": ""
             },
             "require": {
@@ -1178,6 +1178,7 @@
             },
             "provide": {
                 "psr/container-implementation": "1.1|2.0",
+                "psr/log-implementation": "1.0|2.0|3.0",
                 "psr/simple-cache-implementation": "1.0|2.0|3.0"
             },
             "replace": {
@@ -1317,7 +1318,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-06-27T09:04:50+00:00"
+            "time": "2024-07-02T17:23:58+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -2291,16 +2292,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.0.2",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "139676794dc1e9231bf7bcd123cfc0c99182cb13"
+                "reference": "683130c2ff8c2739f4822ff7ac5c873ec529abd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/139676794dc1e9231bf7bcd123cfc0c99182cb13",
-                "reference": "139676794dc1e9231bf7bcd123cfc0c99182cb13",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/683130c2ff8c2739f4822ff7ac5c873ec529abd1",
+                "reference": "683130c2ff8c2739f4822ff7ac5c873ec529abd1",
                 "shasum": ""
             },
             "require": {
@@ -2311,7 +2312,7 @@
             },
             "require-dev": {
                 "ircmaxell/php-yacc": "^0.0.7",
-                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+                "phpunit/phpunit": "^9.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -2343,9 +2344,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.0.2"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.1.0"
             },
-            "time": "2024-03-05T20:51:40+00:00"
+            "time": "2024-07-01T20:03:41+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -2434,306 +2435,6 @@
                 }
             ],
             "time": "2024-03-06T16:17:14+00:00"
-        },
-        {
-            "name": "o2system/curl",
-            "version": "v2.1.23",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/o2system/curl.git",
-                "reference": "c7e6c7b4989153998ffbd7c505280d9b2b8eb8ad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/o2system/curl/zipball/c7e6c7b4989153998ffbd7c505280d9b2b8eb8ad",
-                "reference": "c7e6c7b4989153998ffbd7c505280d9b2b8eb8ad",
-                "shasum": ""
-            },
-            "require": {
-                "o2system/kernel": "*",
-                "php": ">=5.6.0"
-            },
-            "type": "package",
-            "autoload": {
-                "psr-4": {
-                    "O2System\\Curl\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steeven Andrian Salim",
-                    "email": "steevenz@steevenz.com",
-                    "homepage": "http://www.steevenz.com",
-                    "role": "Founder and Lead Project"
-                },
-                {
-                    "name": "Teguh Rianto",
-                    "email": "teguh.rianto22@gmail.com",
-                    "homepage": "http://teguhrianto22.pusku.com",
-                    "role": "Template Designer"
-                }
-            ],
-            "description": "PHP Lightweight HTTP Request Client Libraries",
-            "keywords": [
-                "driver",
-                "framework",
-                "libraries",
-                "php",
-                "utilities"
-            ],
-            "support": {
-                "email": "o2system@yahoo.com",
-                "forum": "https://www.facebook.com/groups/498147006994512",
-                "issues": "https://github.com/o2system/curl/issues",
-                "source": "https://github.com/o2system/curl/tree/v2.1.23"
-            },
-            "time": "2019-01-10T16:35:25+00:00"
-        },
-        {
-            "name": "o2system/gear",
-            "version": "v2.1.32",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/o2system/gear.git",
-                "reference": "1c6b845df2e99c26039c1eb20863f3435483bea5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/o2system/gear/zipball/1c6b845df2e99c26039c1eb20863f3435483bea5",
-                "reference": "1c6b845df2e99c26039c1eb20863f3435483bea5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.0"
-            },
-            "type": "package",
-            "autoload": {
-                "files": [
-                    "src/Helper.php"
-                ],
-                "psr-4": {
-                    "O2System\\Gear\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steeven Andrian Salim",
-                    "email": "steevenz@steevenz.com",
-                    "homepage": "http://www.steevenz.com",
-                    "role": "Founder and Lead Project"
-                },
-                {
-                    "name": "Teguh Rianto",
-                    "email": "teguh.rianto22@gmail.com",
-                    "homepage": "http://teguhrianto22.pusku.com",
-                    "role": "Template Designer"
-                }
-            ],
-            "description": "PHP Developer Tools Library",
-            "keywords": [
-                "driver",
-                "framework",
-                "libraries",
-                "php",
-                "utilities"
-            ],
-            "support": {
-                "email": "o2system@yahoo.com",
-                "forum": "https://www.facebook.com/groups/498147006994512",
-                "issues": "https://github.com/o2system/gear/issues",
-                "source": "https://github.com/o2system/gear/tree/v2.1.32"
-            },
-            "time": "2019-01-10T16:41:51+00:00"
-        },
-        {
-            "name": "o2system/kernel",
-            "version": "v1.9.134",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/o2system/kernel.git",
-                "reference": "da4c7436e2bc50aa8da20dd7914ffa89cf3cdda2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/o2system/kernel/zipball/da4c7436e2bc50aa8da20dd7914ffa89cf3cdda2",
-                "reference": "da4c7436e2bc50aa8da20dd7914ffa89cf3cdda2",
-                "shasum": ""
-            },
-            "require": {
-                "o2system/gear": "*",
-                "o2system/psr": "*",
-                "o2system/spl": "*",
-                "php": ">=5.6.0"
-            },
-            "type": "package",
-            "autoload": {
-                "files": [
-                    "src/Config/Constants.php",
-                    "src/Helpers/Common.php",
-                    "src/Helpers/Inflector.php",
-                    "src/Helpers/Cookie.php",
-                    "src/Kernel.php"
-                ],
-                "psr-4": {
-                    "O2System\\Kernel\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steeven Andrian Salim",
-                    "email": "steevenz@steevenz.com",
-                    "homepage": "http://www.steevenz.com",
-                    "role": "Founder and Lead Project"
-                },
-                {
-                    "name": "Teguh Rianto",
-                    "email": "teguh.rianto22@gmail.com",
-                    "homepage": "http://teguhrianto22.pusku.com",
-                    "role": "Template Designer"
-                }
-            ],
-            "description": "O2System Framework Kernel",
-            "keywords": [
-                "driver",
-                "framework",
-                "libraries",
-                "php",
-                "singleton"
-            ],
-            "support": {
-                "email": "o2system.framework@gmail.com",
-                "forum": "https://www.facebook.com/groups/498147006994512",
-                "issues": "https://github.com/o2system/psr/issues",
-                "source": "https://github.com/o2system/kernel/tree/v1.9.134"
-            },
-            "time": "2019-01-11T11:54:28+00:00"
-        },
-        {
-            "name": "o2system/psr",
-            "version": "v1.2.101",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/o2system/psr.git",
-                "reference": "5629ca9b9508a29871e6c2be51d46c8ec2a7cc57"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/o2system/psr/zipball/5629ca9b9508a29871e6c2be51d46c8ec2a7cc57",
-                "reference": "5629ca9b9508a29871e6c2be51d46c8ec2a7cc57",
-                "shasum": ""
-            },
-            "require": {
-                "o2system/spl": "*",
-                "php": ">=5.6.0"
-            },
-            "type": "package",
-            "autoload": {
-                "psr-4": {
-                    "O2System\\Psr\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steeven Andrian Salim",
-                    "email": "steevenz@steevenz.com",
-                    "homepage": "http://www.steevenz.com",
-                    "role": "Founder and Lead Project"
-                },
-                {
-                    "name": "Teguh Rianto",
-                    "email": "teguh.rianto22@gmail.com",
-                    "homepage": "http://teguhrianto22.pusku.com",
-                    "role": "Template Designer"
-                }
-            ],
-            "description": "O2System PSR it's build based on PHP Framework Interop Group (PHP-FIG) standards recommendations. This repository contains a collection of PHP interfaces based on the PSR-0 until the PSR-7.",
-            "keywords": [
-                "framework",
-                "interfaces",
-                "libraries",
-                "php",
-                "utilities"
-            ],
-            "support": {
-                "email": "o2system.framework@gmail.com",
-                "forum": "https://www.facebook.com/groups/498147006994512",
-                "issues": "https://github.com/o2system/psr/issues",
-                "source": "https://github.com/o2system/psr/tree/v1.2.101"
-            },
-            "time": "2019-01-10T16:52:24+00:00"
-        },
-        {
-            "name": "o2system/spl",
-            "version": "v1.0.65",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/o2system/spl.git",
-                "reference": "c9828810f6f61ab72c741bbe96714bc55704b6f5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/o2system/spl/zipball/c9828810f6f61ab72c741bbe96714bc55704b6f5",
-                "reference": "c9828810f6f61ab72c741bbe96714bc55704b6f5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.0"
-            },
-            "type": "package",
-            "autoload": {
-                "psr-4": {
-                    "O2System\\Spl\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steeven Andrian Salim",
-                    "email": "steevenz@steevenz.com",
-                    "homepage": "http://www.steevenz.com",
-                    "role": "Founder and Lead Project"
-                },
-                {
-                    "name": "Teguh Rianto",
-                    "email": "teguh.rianto22@gmail.com",
-                    "homepage": "http://teguhrianto22.pusku.com",
-                    "role": "Template Designer"
-                }
-            ],
-            "description": "O2System Standard PHP Library (SPL) it's build based on original standard PHP library. It's made up primarily of commonly needed datastructure classes, iterators, handlers and exceptions for O2System PHP Framework, but also can be used independently outside O2System PHP Framework environment.",
-            "keywords": [
-                "framework",
-                "interfaces",
-                "libraries",
-                "php",
-                "utilities"
-            ],
-            "support": {
-                "email": "o2system.framework@gmail.com",
-                "forum": "https://www.facebook.com/groups/498147006994512",
-                "issues": "https://github.com/o2system/spl/issues",
-                "source": "https://github.com/o2system/spl/tree/v1.0.65"
-            },
-            "time": "2019-01-10T16:55:58+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -3615,54 +3316,6 @@
                 }
             ],
             "time": "2024-06-15T16:17:23+00:00"
-        },
-        {
-            "name": "steevenz/rajaongkir",
-            "version": "v2.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/steevenz/rajaongkir.git",
-                "reference": "333cbdbb6ab603a666b3322186aa60e7ad3a6cd4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/steevenz/rajaongkir/zipball/333cbdbb6ab603a666b3322186aa60e7ad3a6cd4",
-                "reference": "333cbdbb6ab603a666b3322186aa60e7ad3a6cd4",
-                "shasum": ""
-            },
-            "require": {
-                "o2system/curl": "*",
-                "php": ">=7.2.0"
-            },
-            "type": "php-class",
-            "autoload": {
-                "files": [
-                    "src/Rajaongkir.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steeve Andrian",
-                    "email": "steevenz@steevenz.com",
-                    "homepage": "http://www.steevenz.com",
-                    "role": "PHP Programmer"
-                }
-            ],
-            "description": "Advanced RajaOngkir API PHP Class",
-            "keywords": [
-                "api",
-                "rajaongkir"
-            ],
-            "support": {
-                "email": "steevenz@steevenz.com",
-                "issues": "https://github.com/steevenz/rajaongkir/issues",
-                "source": "https://github.com/steevenz/rajaongkir/tree/master"
-            },
-            "time": "2019-08-15T06:48:31+00:00"
         },
         {
             "name": "symfony/clock",
@@ -6506,16 +6159,16 @@
         },
         {
             "name": "laravel/breeze",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/breeze.git",
-                "reference": "438424c11583576bbf3897dda505d2565e53c9bd"
+                "reference": "8cbf19b555dc666af7be9c7397d5fdd9d182f33d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/breeze/zipball/438424c11583576bbf3897dda505d2565e53c9bd",
-                "reference": "438424c11583576bbf3897dda505d2565e53c9bd",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/8cbf19b555dc666af7be9c7397d5fdd9d182f33d",
+                "reference": "8cbf19b555dc666af7be9c7397d5fdd9d182f33d",
                 "shasum": ""
             },
             "require": {
@@ -6562,7 +6215,7 @@
                 "issues": "https://github.com/laravel/breeze/issues",
                 "source": "https://github.com/laravel/breeze"
             },
-            "time": "2024-06-06T14:18:45+00:00"
+            "time": "2024-07-02T17:51:11+00:00"
         },
         {
             "name": "laravel/pint",
@@ -6632,16 +6285,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.30.0",
+            "version": "v1.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "e08b594052385ab9891dd86047e52da8a953c827"
+                "reference": "8ba049b6c06e0330b6aa1fb7af2746fb4da445e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/e08b594052385ab9891dd86047e52da8a953c827",
-                "reference": "e08b594052385ab9891dd86047e52da8a953c827",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/8ba049b6c06e0330b6aa1fb7af2746fb4da445e4",
+                "reference": "8ba049b6c06e0330b6aa1fb7af2746fb4da445e4",
                 "shasum": ""
             },
             "require": {
@@ -6691,7 +6344,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2024-06-18T17:36:56+00:00"
+            "time": "2024-07-01T20:55:03+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -8976,5 +8629,5 @@
         "php": "^8.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

@@ -7,89 +7,29 @@
     <section class="bg-gray-100 py-8 antialiased dark:bg-gray-900 md:py-16">
         <form action="" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
             <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
-                <div class="flex-1 space-y-8">
-                    <div class="space-y-4">
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Delivery Details</h2>
+                <div class="flex-1">
+                    <div class="space-y-8 px-8">
 
-                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            <div>
-                                <label for="your_name"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Your name
-                                </label>
-                                <input type="text" id="your_name" name="name"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{ Auth::user()->name }}" readonly />
-                            </div>
+                        <div class="mb-8">
+                            <h2 class="text-xl font-semibold text-hitamCoklat dark:text-white">Delivery Details</h2>
 
-                            <div>
-                                <label for="your_email"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Your email*
-                                </label>
-                                <input type="email" id="your_email" name="email"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{ Auth::user()->email }}" readonly />
-                            </div>
+                            @if ($selectedAddress)
+                                <div
+                                    class="block m-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 {{ $selectedAddress->is_selected ? 'border-sky-700' : '' }}">
 
-                            <div>
-                                <div class="mb-2 flex items-center gap-2">
-                                    <label for="select-country-input-3"
-                                        class="block text-sm font-medium text-gray-900 dark:text-white"> Negara*
-                                    </label>
+                                    <h5 class="mb-2 text-xl font-bold tracking-tight text-hitamCoklat dark:text-white">
+                                        {{ Auth::user()->name }} | <span>{{ $selectedAddress->phone }}</span></h5>
+                                    <p class="font-normal text-gray-700 dark:text-gray-400">
+                                        {{ $selectedAddress->address }}
+                                    </p>
+                                    <p class="font-normal text-gray-700 dark:text-gray-400">
+                                        {{ $selectedAddress->province }}
+                                        | <span>{{ $selectedAddress->postal_code }}</span>
+                                    </p>
                                 </div>
-                                <input type="text" id="your_name" name="negara"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{ Auth::user()->negara }}" readonly />
-                            </div>
-
-                            <div>
-                                <div class="mb-2 flex items-center gap-2">
-                                    <label for="select-city-input-3"
-                                        class="block text-sm font-medium text-gray-900 dark:text-white"> Kota* </label>
-                                </div>
-                                <input type="text" id="your_name" name="kota"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{ Auth::user()->kota }}" readonly />
-                            </div>
-
-                            <div>
-                                <div class="mb-2 flex items-center gap-2">
-                                    <label for="select-city-input-3"
-                                        class="block text-sm font-medium text-gray-900 dark:text-white"> Alamat*
-                                    </label>
-                                </div>
-                                <textarea id="message" rows="4" name="alamat"
-                                    class="block p-2.5 w-full h-10 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Masukan alamat disini">{{ Auth::user()->alamat }}</textarea>
-                            </div>
-
-                            <div>
-                                <label for="phone-input-3"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Nomor Telfon*
-                                </label>
-                                <div class="flex items-center">
-                                    <button id="dropdown-phone-button-3" data-dropdown-toggle="dropdown-phone-3"
-                                        class="z-10 inline-flex shrink-0 items-center rounded-s-lg border border-gray-300 bg-gray-100 px-4 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-700"
-                                        type="button">
-                                        +62
-                                    </button>
-                                    <div class="relative w-full">
-                                        <input type="text" id="phone-input" name="telp"
-                                            class="z-20 block w-full rounded-e-lg border border-s-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:border-s-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500"
-                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="{{ Auth::user()->phone }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div>
-                                <label for="vat_number"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Kode POS
-                                </label>
-                                <input type="text" id="vat_number" name="kode_pos"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    value="{{ Auth::user()->kode_pos }}" readonly />
-                            </div>
+                            @else
+                                <p>Tambahkan anda terlebih dahulu di profile</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -99,25 +39,26 @@
                         <div class="-my-3 divide-y divide-gray-200 dark:divide-gray-800">
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Subtotal</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">Rp
-                                    {{ $subtotal }}</dd>
+                                <dd id="subtotal-amount" class="text-base font-medium text-hitamCoklat dark:text-white">
+                                    Rp
+                                    {{ number_format($subtotal, 0, ',', '.') }}</dd>
                             </dl>
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Kurir</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">Rp 0</dd>
+                                <dd class="text-base font-medium text-hitamCoklat dark:text-white">Free ongkir</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">
+                                <dd id="tax-amount" class="text-base font-medium text-hitamCoklat dark:text-white">
                                     {{ number_format($tax * 100) . '%' }}
                                 </dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4 py-3">
-                                <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                <dd class="text-base font-bold text-gray-900 dark:text-white">Rp
-                                    {{ number_format($total, 0, ',', '.') }}</dd>
+                                <dt class="text-base font-bold text-hitamCoklat dark:text-white">Total</dt>
+                                <dd id="total-amount" class="text-base font-bold text-hitamCoklat dark:text-white">Rp
+                                    {{ number_format($subtotal, 0, ',', '.') }}</dd>
                             </dl>
                         </div>
                     </div>
@@ -133,8 +74,7 @@
     </section>
 
     @section('scripts')
-        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key={{ config('midtrans.clientKey') }}>
-        </script>
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key={{ config('midtrans.clientKey') }}></script>
         <script type="text/javascript">
             document.getElementById('pay-button').onclick = function() {
                 // SnapToken acquired from previous step
@@ -142,7 +82,7 @@
                     // Optional
                     onSuccess: function(result) {
                         /* You may add your own js here, this is just example */
-                        window.location.href='{{route('checkout.success', $transaction->id)}}'
+                        window.location.href = '{{ route('checkout.success', $transaction->id) }}'
                     },
                     // Optional
                     onPending: function(result) {

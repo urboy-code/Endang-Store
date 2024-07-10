@@ -65,12 +65,18 @@
             </select>
         </div>
         <div class="mb-5">
+            <label for="weight" class="block mb-2 text-sm font-bold text-dark">Berat Produk</label>
+            <input type="text" id="weight" name="weight"
+                class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                value="{{$product->weight}}" />
+        </div>
+        <div class="mb-5">
 
             <label for="description" class="block mb-2 text-sm font-bold text-dark">Deskripsi
                 Produk</label>
             <textarea id="description" rows="4" name="description"
                 class="block p-2.5 w-full text-sm text-dark bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="gambarkan secara singkat tentang produknya disini...">{{$product->description}}</textarea>
+                placeholder="gambarkan secara singkat tentang produknya disini...">{{ $product->description }}</textarea>
 
         </div>
         <button type="submit"

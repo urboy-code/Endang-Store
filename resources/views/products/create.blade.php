@@ -60,6 +60,12 @@
             </select>
         </div>
         <div class="mb-5">
+            <label for="weight" class="block mb-2 text-sm font-bold text-dark">Berat Produk</label>
+            <input type="text" id="weight" name="weight"
+                class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="1000" />
+        </div>
+        <div class="mb-5">
 
             <label for="description" class="block mb-2 text-sm font-bold text-dark">Deskripsi
                 Produk</label>

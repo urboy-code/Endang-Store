@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Gateway;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Courier;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Midtrans\Config;
-use Midtrans\Snap;
+use Illuminate\Support\Facades\Http;
 
 class MidtransController extends Controller
 {
     public function process(Request $request)
     {
         $data = $request->all();
-        // dd($data);
+        dd($data);
 
         $transaction = Transaction::create([
             'user_id' => auth()->user()->id,
@@ -47,12 +47,22 @@ class MidtransController extends Controller
         $transaction->snap_token = $snapToken;
         $transaction->save();
 
-        // dd($transaction);
+        // session(['ongkir' => $ongkir]);
         return redirect()->route('checkout', $transaction->id);
     }
 
     public function checkout(Transaction $transaction)
     {
+        $user = Auth::user();
+
+        if ($user->addresses->isEmpty()) {
+            return redirect()->route('address.index')->with('error', 'Tambahkan alamat terlebih dahulu sebelum melakukan Checkout!');
+        }
+
+        $selectedAddress = $user->addresses()->where('is_selected', 1)->first();
+        if (!$selectedAddress) {
+            return redirect()->route('address.index')->with('error', 'Tolong pilih alamat anda');
+        }
         // $transaction = Transaction::findOrFail($transaction);
         $transactionId = $transaction->id;
         // dd($transactionId);
@@ -63,7 +73,7 @@ class MidtransController extends Controller
         $taxAmount = $subtotal * $tax;
         $total = $taxAmount + $subtotal;
 
-        return view('checkout.checkout', compact('subtotal', 'tax', 'total', 'transaction'));
+        return view('checkout.checkout', compact('subtotal', 'tax', 'total', 'transaction', 'selectedAddress'));
     }
 
     public function success(Transaction $transaction)

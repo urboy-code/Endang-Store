@@ -21,8 +21,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('/shop', ShopController::class);
 Route::resource('/cart', CartController::class);
 
-Route::middleware(['auth', 'profileComplete'])->group(function () {
-    // Route::get('transaction', [TransactionController::class, 'index'])->name('transaction');
+Route::middleware(['auth'])->group(function () {
+    Route::post('checkout', [MidtransController::class, 'process'])->name('checkout.process');
+    Route::get('checkout/{transaction}', [MidtransController::class, 'checkout'])->name('checkout');
+    Route::get('checkout/success/{transaction}', [MidtransController::class, 'success'])->name('checkout.success');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -32,9 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('remove-product/{rowId}', [CartController::class, 'destroy'])->name('remove-product');
 });
 
-Route::post('checkout', [MidtransController::class, 'process'])->name('checkout.process');
-Route::get('checkout/{transaction}', [MidtransController::class, 'checkout'])->name('checkout');
-Route::get('checkout/success/{transaction}', [MidtransController::class, 'success'])->name('checkout.success');
+
 
 
 Route::resource('dashboard', DashboardController::class);
@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Ongkir
-Route::get('cek-ongkir', [OngkirController::class, 'index'])->name('cek-ongkir.index');
+// Route::get('cek-ongkir', [OngkirController::class, 'index'])->name('cek-ongkir.index');
 
 
 
@@ -66,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/profile/address', AddressController::class);
+    Route::post('/profile/address/select/{id}', [AddressController::class, 'select'])->name('address.select');
+    Route::delete('/profile/address/select/{id}', [AddressController::class, 'destroy'])->name('address.destroy');
 });
 
 require __DIR__ . '/auth.php';

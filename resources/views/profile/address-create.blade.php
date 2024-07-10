@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
+                <div>
                     <div class="flex items-center">
                         <a href="{{ route('address.index') }}"
                             class="text-white font-medium text-md bg-btn rounded-md flex items-center justify-center py-3 px-8">
@@ -27,7 +27,7 @@
                                     <select id="city" name="city"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 ">
                                         <option selected="">Pilih Kota</option>
-                                        @foreach ($origins as $city)
+                                        @foreach ($cities as $city)
                                             <option value="{{ $city['city_id'] }}">{{ $city['city_name'] }}</option>
                                         @endforeach
                                     </select>
@@ -68,6 +68,8 @@
                                         placeholder="Your description here"></textarea>
                                 </div>
                             </div>
+                            <input type="hidden" name="weight" value="1000">
+                            <input type="hidden" name="courier" value="JNE">
                             <button type="submit"
                                 class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-btn rounded-lg hover:bg-hover">
                                 Tambahkan Alamat
