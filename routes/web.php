@@ -37,8 +37,8 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-Route::resource('dashboard', DashboardController::class);
-Route::resource('orders', OrderController::class);
+// Route::resource('dashboard', DashboardController::class);
+
 
 Route::get('/product/trash', [ProductController::class, 'trashed'])->name('product.trash');
 Route::get('/product/{id}/restore', [ProductController::class, 'restore'])->name('product.restore');
@@ -52,13 +52,9 @@ Route::middleware(['auth'])->group(function () {
         // Tambahkan rute admin lainnya di sini
         Route::resource('product', ProductController::class);
         Route::resource('user', UserController::class);
+        Route::resource('orders', OrderController::class);
     });
 });
-
-// Ongkir
-// Route::get('cek-ongkir', [OngkirController::class, 'index'])->name('cek-ongkir.index');
-
-
 
 
 Route::middleware('auth')->group(function () {

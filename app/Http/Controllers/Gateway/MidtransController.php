@@ -15,7 +15,7 @@ class MidtransController extends Controller
     public function process(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        // dd($data);
 
         $transaction = Transaction::create([
             'user_id' => auth()->user()->id,

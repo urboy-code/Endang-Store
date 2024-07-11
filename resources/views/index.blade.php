@@ -2,10 +2,10 @@
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 mt-3 lg:right-0">
         <div class="flex flex-wrap items-center justify-center md:flex-row text-center lg:text-start">
             <div class="w-full px-4 lg:w-1/2">
-                <h1 class="text-lg font-bold text-secondary mb-1 md:text-lg lg:text-2xl">Selamat Datang
+                <h1 class="text-3xl font-bold text-secondary mb-1 md:text-lg lg:text-2xl">Selamat Datang
                     @auth
                         <span class="font-bold text-hitamCoklat uppercase">{{ Auth::user()->name }}</span>
-                    @endauth Di <span class="block text-hitamCoklat text-5xl font-extrabold lg:text-7xl">Toko
+                    @endauth Di <span class="block text-hitamCoklat text-3xl font-extrabold lg:text-7xl">Toko
                         Endang</span>
                 </h1>
                 <p class="text-base text-dark font-medium leading-relaxed mb-10 md:text-lg lg:text-lg">Mencari Baju?</p>

@@ -61,4 +61,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Address::class);
     }
+
+    public function selectedAddress()
+    {
+        return $this->hasOne(Address::class)->where('is_selected', true);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

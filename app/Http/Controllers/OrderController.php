@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -11,7 +12,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('orders.index');
+        $transactions = Transaction::with('user')->get();
+        // dd($transactions);
+        return view('dashboard.transaction', compact('transactions'));
     }
 
     /**
@@ -59,6 +62,9 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $transaction = Transaction::findOrFail($id);
+        $transaction->delete();
+
+        return redirect()->route('orders.index');
     }
 }

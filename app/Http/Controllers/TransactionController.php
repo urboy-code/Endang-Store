@@ -10,8 +10,6 @@ use Midtrans\Snap;
 
 class TransactionController extends Controller
 {
-
-
     public function index()
     {
         $products = Cart::content();

@@ -11,32 +11,28 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-2">Id</th>
-                                <th scope="col" class="px-4 py-3">User name</th>
-                                <th scope="col" class="px-4 py-3">Email</th>
-                                <th scope="col" class="px-4 py-3">Kota</th>
-                                <th scope="col" class="px-4 py-3">Alamat</th>
-                                <th scope="col" class="px-4 py-3">Kode Pos</th>
-                                <th scope="col" class="px-4 py-3">No HP</th>
-                                <th scope="col" class="px-4 py-3">Action</th>
+                                <th scope="col" class="px-4 py-3">User Id</th>
+                                <th scope="col" class="px-4 py-3">User Name</th>
+                                <th scope="col" class="px-4 py-3">Total Harga</th>
+                                <th scope="col" class="px-4 py-3">Status</th>
+                                <th scope="col" class="px-4 py-3">Created At</th>
+                                <th scope="col" class="">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($transactions as $transaction)
                                 <tr class="border-b dark:border-gray-700">
-                                    <th class="px-2">{{ $user->id }}</th>
+                                    <th class="px-2">{{ $transaction->id }}</th>
                                     <th scope="row"
                                         class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $user->name }}
+                                        {{ $transaction->user_id }}
                                     </th>
-                                    <td class="px-4 py-3">{{ $user->email }}</td>
-                                    @if ($user->selectedAddress)
-                                        <td class="px-4 py-3">{{ $user->selectedAddress->city }}</td>
-                                        <td class="px-4 py-3">{{ $user->selectedAddress->address }}</td>
-                                        <td class="px-4 py-3">{{ $user->selectedAddress->postal_code }}</td>
-                                        <td class="px-4 py-3">{{ $user->selectedAddress->phone }}</td>
-                                    @endif
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap flex">
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                    <td class="px-4 py-3">{{ $transaction->user->name }}</td>
+                                    <td class="px-4 py-3">{{ $transaction->totalAmount }}</td>
+                                    <td class="px-4 py-3">{{ $transaction->status }}</td>
+                                    <td class="px-4 py-3">{{ $transaction->created_at }}</td>
+                                    <td class="font-medium text-hitamCoklat whitespace-nowrap flex">
+                                        <form action="{{ route('orders.destroy', $transaction->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

@@ -20,6 +20,7 @@ class CartController extends Controller
         $cartData = $this->getCartData($userId);
 
         $products = Cart::content();
+        // dd($products);
         $subtotal = 0;
         foreach ($products as $product) {
             $subtotal += $product->price;
@@ -42,7 +43,8 @@ class CartController extends Controller
                 'price' => $newPrice,
                 'options' => [
                     'unit_price' => $product->unit_price,
-                    'image' => $product->image
+                    'image' => $product->image,
+                    'weight' => $product->weight
                 ]
             ]);
         } else {
@@ -54,7 +56,8 @@ class CartController extends Controller
                 'price' => $product->unit_price * 1,
                 'options' => [
                     'unit_price' => $product->unit_price,
-                    'image' => $product->image
+                    'image' => $product->image,
+                    'weight' => $product->weight
                 ]
             ]);
         }
