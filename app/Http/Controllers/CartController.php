@@ -20,19 +20,25 @@ class CartController extends Controller
         $cartData = $this->getCartData($userId);
 
         $products = Cart::content();
-        // dd($products);
+        $tax = 0.1;
         $subtotal = 0;
         foreach ($products as $product) {
             $subtotal += $product->price;
         };
-        return view('cart', compact('products', 'subtotal', 'cartData'));
+
+        $taxAmount = $subtotal * $tax;
+        $total = $taxAmount + $subtotal;
+        return view('cart', compact('products', 'subtotal', 'cartData', 'total'));
     }
 
     public function create($productId)
     {
         $product = Product::findOrFail($productId);
-
-        $existingItem = Cart::content()->where('id', $product->id)->first();
+        $data = Cart::content();
+        // if (gettype($data) === 'array') {
+        //     $data = collect($data); // Convert to collection if necessary
+        // }
+        $existingItem = $data->where('id', $product->id)->first();
 
         if ($existingItem) {
             $newQty = $existingItem->qty + 1;

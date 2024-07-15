@@ -27,14 +27,14 @@
                                 <th scope="col" class="px-3 py-3">Kategori Produk</th>
                                 <th scope="col" class="px-4 py-3">Harga</th>
                                 <th scope="col" class="px-4 py-3">Berat</th>
-                                <th scope="col" class="px-4 py-3">Action</th>
+                                <th scope="col" class="px-2 py-3">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-slate-950">
                             @foreach ($products as $product)
                                 <tr class="border-b dark:border-gray-700">
                                     <th scope="row"
-                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        class="px-4 py-3 font-medium text-gray-950 whitespace-nowrap dark:text-white">
                                         <img class="w-15 h-20 object-cover rounded-t-md"
                                             src="{{ asset('storage/' . $product->image) }}" class="h-25 w-30"
                                             alt="">
@@ -44,7 +44,7 @@
                                     <td class="px-4 py-3">Rp {{ number_format($product->unit_price, 0, ',', '.') }}</td>
                                     <td class="px-4 py-3">{{ $product->weight }}</td>
                                     <td
-                                        class="px-6 py-4 items-center justify-center font-medium text-gray-900 whitespace-nowrap flex">
+                                        class="px-2 py-4 items-center justify-center font-medium text-gray-900 whitespace-nowrap flex">
                                         <a href="{{ route('product.edit', $product->id) }}"
                                             class="text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Edit</a>
                                         <form action="{{ route('product.destroy', $product->id) }}" method="POST">

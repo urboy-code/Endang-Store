@@ -58,7 +58,7 @@
                             <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-bold text-hitamCoklat dark:text-white">Total</dt>
                                 <dd id="total-amount" class="text-base font-bold text-hitamCoklat dark:text-white">Rp
-                                    {{ number_format($subtotal, 0, ',', '.') }}</dd>
+                                    {{ number_format($total, 0, ',', '.') }}</dd>
                             </dl>
                         </div>
                     </div>

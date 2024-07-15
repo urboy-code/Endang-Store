@@ -100,16 +100,17 @@
                         <form action="{{ route('checkout.process') }}" method="POST">
                             @csrf
                             @foreach ($cartData as $cart)
-                                <input type="hidden" name="items[{{ $loop->index }}][id]"
+                                {{-- <input type="hidden" name="items[{{ $loop->index }}][id]"
                                     value="{{ $cart['id'] }}">
                                 <input type="hidden" name="items[{{ $loop->index }}][unit_price]"
                                     value="{{ $cart['options']['unit_price'] }}">
                                 <input type="hidden" name="items[{{ $loop->index }}][price]"
                                     value="{{ $cart['price'] }}">
                                 <input type="hidden" name="items[{{ $loop->index }}][qty]"
-                                    value="{{ $cart['qty'] }}">
+                                    value="{{ $cart['qty'] }}"> --}}
                             @endforeach
                             <input type="hidden" name="subtotal" value="{{ $subtotal }}">
+                            <input type="hidden" name="total" value="{{ $total }}">
                             <button type="submit"
                                 class="flex w-full items-center justify-center rounded-lg bg-blue-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300">Proceed
                                 to Checkout</button>

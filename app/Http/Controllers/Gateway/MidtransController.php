@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Courier;
 use App\Models\Transaction;
+use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -23,19 +24,17 @@ class MidtransController extends Controller
             'status' => 'pending',
         ]);
 
-
-
         \Midtrans\Config::$serverKey = config('midtrans.serverKey');
         \Midtrans\Config::$isProduction = false;
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
 
-        $subtotal = (float) str_replace(['Rp ', ',', '.'], '', $request->subtotal);
+        $total = (float) str_replace(['Rp ', ',', '.'], '', $request->total);
 
         $params = array(
             'transaction_details' => array(
                 'order_id' => uniqid(),
-                'gross_amount' => $subtotal,
+                'gross_amount' => $total,
             ),
             'customer_details' => array(
                 'first_name' => Auth::user()->name,
@@ -78,11 +77,7 @@ class MidtransController extends Controller
 
     public function success(Transaction $transaction)
     {
-        $userCart = Cart::where('user_id', Auth::user()->id)->first();
-        if ($userCart) {
-            $userCart->update(['cart_data' => []]);
-        }
-
+        FacadesCart::destroy();
         $transaction->status = 'success';
         $transaction->save();
 

@@ -10,11 +10,10 @@
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
-                                    <p class="mb-0 font-sans text-sm font-semibold leading-normal">Today's Money
+                                    <p class="mb-0 font-sans text-sm font-semibold leading-normal">Total Produk
                                     </p>
                                     <h5 class="mb-0 font-bold">
-                                        $53,000
-                                        <span class="text-sm leading-normal font-weight-bolder text-lime-500">+55%</span>
+                                        {{$totalProduct}}
                                     </h5>
                                 </div>
                             </div>
@@ -67,7 +66,6 @@
                                     <p class="mb-0 font-sans text-sm font-semibold leading-normal">Sales</p>
                                     <h5 class="mb-0 font-bold">
                                         Rp {{ number_format($totalAmount, 0, ',', '.') }}
-                                        <span class="text-sm leading-normal font-weight-bolder text-lime-500">+5%</span>
                                     </h5>
                                 </div>
                             </div>

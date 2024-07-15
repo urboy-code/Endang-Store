@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,8 +16,9 @@ class DashboardController extends Controller
     {
         $totalUsers = User::where('role', 'user')->count();
         $totalAmount = Transaction::sum('totalAmount');
+        $totalProduct = Product::count();
         // dd($totalAmount);
-        return view('dashboard.index', compact('totalUsers', 'totalAmount'));
+        return view('dashboard.index', compact('totalUsers', 'totalAmount', 'totalProduct'));
     }
 
     /**
